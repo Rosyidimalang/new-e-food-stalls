@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
+import React, { Component } from "react";
 import { useState } from "react";
 import { HiMinusCircle } from "react-icons/hi";
 import { HiPlusCircle } from "react-icons/hi";
@@ -55,8 +56,6 @@ export default function App() {
     } else {
       sudahAda.jumlah++;
       sudahAda.total += sudahAda.harga;
-      // sudahAda.jumlah = sudahAda.jumlah + 1
-      // sudahAda.total = sudahAda.total + sudahAda.harga
     }
     setPesanan(newPesanan);
   };
@@ -83,19 +82,20 @@ export default function App() {
     newPesanan[idx].tampilkanKet = false;
     setPesanan(newPesanan);
   };
+
   return (
     <div>
       <div className="grid grid-cols-10 gap-3">
         <div>
-          <div className="text-[15px] mb-3 shadow  h-10 text-center py-2">KATEGORI</div>
+          <div className="font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">KATEGORI</div>
           {menus.map((value, index) => (
-            <div className="border cursor-pointer  h-10 bg-yellow-600 text-center items-center font-bold ml-5 mb-2 py-2" onClick={() => setSelectedMenud(value)}>
+            <div className="border cursor-pointer  h-10 bg-yellow-600 text-center items-center font-bold mb-2 py-2" onClick={() => setSelectedMenud(value)}>
               {value}
             </div>
           ))}
         </div>
         <div className="col-span-6">
-          <div className="text-[15px] mb-3 shadow w-[5rem] h-10 text-center py-2">PRODUK</div>
+          <div className="font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">PRODUK</div>
           <div className="grid grid-cols-5 gap-5 ">
             {product[selectedMenu].map((value, index) => (
               <div onClick={() => tambahkankepesanan(value)} className="bg-amber-600 text-center p-3 ">
@@ -107,7 +107,7 @@ export default function App() {
           </div>
         </div>
         <div className="col-span-3 space-y-5">
-          <div className="text-[15px] mb-3 shadow w-[5rem] h-10 text-center py-2">PESANAN</div>
+          <div className="font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">PESANAN</div>
           {pesanan.map((value, index) => (
             <div className="bg-teal-500 p-7">
               <div>
