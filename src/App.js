@@ -1,5 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { useState } from "react";
+import { HiMinusCircle } from "react-icons/hi";
+import { HiPlusCircle } from "react-icons/hi";
+import { BsChevronDown } from "react-icons/bs";
+import { FaTrash } from "react-icons/fa";
+import { RiDeleteBack2Fill } from "react-icons/ri";
 
 const menus = ["makanan", "minuman", "lainnya"];
 const product = {
@@ -33,8 +39,110 @@ const product = {
   ],
 };
 
-function App() {
-  return <div></div>;
-}
+export default function App() {
+  const [pesanan, setPesanan] = useState([]);
+  const [selectedMenu, setSelectedMenud] = useState("makanan");
+  const newPesanan = [...pesanan];
+  const tambahkankepesanan = (valueyangdiklik) => {
+    const newPesanan = [...pesanan];
+    const sudahAda = newPesanan.find((value) => value.nama === valueyangdiklik.nama);
+    if (!sudahAda) {
+      newPesanan.push({
+        ...valueyangdiklik,
+        jumlah: 1,
+        total: valueyangdiklik.harga,
+      });
+    } else {
+      sudahAda.jumlah++;
+      sudahAda.total += sudahAda.harga;
+      // sudahAda.jumlah = sudahAda.jumlah + 1
+      // sudahAda.total = sudahAda.total + sudahAda.harga
+    }
+    setPesanan(newPesanan);
+  };
 
-export default App;
+  const plus = (idx) => {
+    newPesanan[idx].jumlah++;
+    newPesanan[idx].total += newPesanan[idx].harga;
+    setPesanan(newPesanan);
+  };
+  const minus = (idx) => {
+    newPesanan[idx].jumlah--;
+    newPesanan[idx].total -= newPesanan[idx].harga;
+    setPesanan(newPesanan);
+  };
+  const hapus = (idx) => {
+    newPesanan.splice(idx, 1);
+    setPesanan(newPesanan);
+  };
+  const showKet = (idx) => {
+    newPesanan[idx].tampilkanKet = true;
+    setPesanan(newPesanan);
+  };
+  const hideKet = (idx) => {
+    newPesanan[idx].tampilkanKet = false;
+    setPesanan(newPesanan);
+  };
+  return (
+    <div>
+      <div className="grid grid-cols-10 gap-3">
+        <div>
+          <div className="text-[15px] mb-3 shadow  h-10 text-center py-2">KATEGORI</div>
+          {menus.map((value, index) => (
+            <div className="border cursor-pointer  h-10 bg-yellow-600 text-center items-center font-bold ml-5 mb-2 py-2" onClick={() => setSelectedMenud(value)}>
+              {value}
+            </div>
+          ))}
+        </div>
+        <div className="col-span-6">
+          <div className="text-[15px] mb-3 shadow w-[5rem] h-10 text-center py-2">PRODUK</div>
+          <div className="grid grid-cols-5 gap-5 ">
+            {product[selectedMenu].map((value, index) => (
+              <div onClick={() => tambahkankepesanan(value)} className="bg-amber-600 text-center p-3 ">
+                <img src={value.gambar} alt="gambar" />
+                <div>{value.nama}</div>
+                <div>{value.harga}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="col-span-3 space-y-5">
+          <div className="text-[15px] mb-3 shadow w-[5rem] h-10 text-center py-2">PESANAN</div>
+          {pesanan.map((value, index) => (
+            <div className="bg-teal-500 p-7">
+              <div>
+                <div className="flex gap-[40px]  ">
+                  <div>{value.nama}</div>
+
+                  <button disabled={value.jumlah === 1} onClick={() => minus(index)}>
+                    <HiMinusCircle />
+                  </button>
+                  <div>{value.jumlah}</div>
+                  <button disabled={value.jumlah === 10} onClick={() => plus(index)}>
+                    <HiPlusCircle />
+                  </button>
+                  <div>{value.total}</div>
+                  <button className="text-blue-900" onClick={() => showKet(index)}>
+                    <BsChevronDown />
+                  </button>
+                  <button onClick={() => hapus(index)}>
+                    <FaTrash />
+                  </button>
+                </div>
+              </div>
+              <div>@{value.harga}</div>
+              {value.tampilkanKet && (
+                <>
+                  <input className="border rounded-lg w-[21rem]" placeholder="tambahkan keterangan"></input>
+                  <button className="ml-3" onClick={() => hideKet(index)}>
+                    <RiDeleteBack2Fill />
+                  </button>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
