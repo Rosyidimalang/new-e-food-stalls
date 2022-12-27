@@ -7,6 +7,7 @@ import { HiPlusCircle } from "react-icons/hi";
 import { BsChevronDown } from "react-icons/bs";
 import { FaTrash } from "react-icons/fa";
 import { RiDeleteBack2Fill } from "react-icons/ri";
+import { animation } from "./utils/constant";
 
 const menus = ["makanan", "minuman", "lainnya"];
 const product = {
@@ -43,6 +44,7 @@ const product = {
 export default function App() {
   const [pesanan, setPesanan] = useState([]);
   const [selectedMenu, setSelectedMenud] = useState("makanan");
+  const [tampilPesanan, settampilPesanan] = useState(true);
   const newPesanan = [...pesanan];
   const tambahkankepesanan = (valueyangdiklik) => {
     const newPesanan = [...pesanan];
@@ -85,20 +87,22 @@ export default function App() {
 
   return (
     <div>
-      <div className="grid grid-cols-10 gap-3">
-        <div>
-          <div className="font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">KATEGORI</div>
-          {menus.map((value, index) => (
-            <div className="border cursor-pointer  h-10 bg-yellow-600 text-center items-center font-bold mb-2 py-2" onClick={() => setSelectedMenud(value)}>
-              {value}
-            </div>
-          ))}
+      <div className="flex flex-col md:grid grid-cols-10 gap-3">
+        <div className="md:order-1">
+          <div className=" font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">KATEGORI</div>
+          <div className=" grid grid-cols-3 md:grid-cols-1 ">
+            {menus.map((value, index) => (
+              <div className="font-bold text-[18px] text-[#fff700] mb-2 shadow bg-red-600 py-2 text-center hover:bg-red-300 hover:text-[#f5f3ad]">
+                <button onClick={() => setSelectedMenud(value)}>{value}</button>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="col-span-6">
+        <div className="col-span-6 order-3 md:order-2">
           <div className="font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">PRODUK</div>
-          <div className="grid grid-cols-5 gap-5 ">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-5 ">
             {product[selectedMenu].map((value, index) => (
-              <div onClick={() => tambahkankepesanan(value)} className="bg-amber-600 text-center p-3 ">
+              <div onClick={() => tambahkankepesanan(value)} className={`${animation} bg-amber-600 text-center p-3 `}>
                 <img src={value.gambar} alt="gambar" />
                 <div>{value.nama}</div>
                 <div>{value.harga}</div>
@@ -106,41 +110,45 @@ export default function App() {
             ))}
           </div>
         </div>
-        <div className="col-span-3 space-y-5">
-          <div className="font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">PESANAN</div>
-          {pesanan.map((value, index) => (
-            <div className="bg-teal-500 p-7">
-              <div>
-                <div className="flex gap-[40px]  ">
-                  <div>{value.nama}</div>
+        <div className="col-span-3 space-y-5 order-2 md:order-3">
+          <div className="font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">
+            PESANAN <span className="text-red-400">{pesanan.length} </span>{" "}
+          </div>
+          <button onClick={() => settampilPesanan(!tampilPesanan)}>{`${tampilPesanan ? "hide" : "tampilkan"}  pesanan`}</button>
+          {tampilPesanan &&
+            pesanan.map((value, index) => (
+              <div className="bg-teal-500 p-7">
+                <div>
+                  <div className="flex gap-[40px]  ">
+                    <div>{value.nama}</div>
 
-                  <button disabled={value.jumlah === 1} onClick={() => minus(index)}>
-                    <HiMinusCircle />
-                  </button>
-                  <div>{value.jumlah}</div>
-                  <button disabled={value.jumlah === 10} onClick={() => plus(index)}>
-                    <HiPlusCircle />
-                  </button>
-                  <div>{value.total}</div>
-                  <button className="text-blue-900" onClick={() => showKet(index)}>
-                    <BsChevronDown />
-                  </button>
-                  <button onClick={() => hapus(index)}>
-                    <FaTrash />
-                  </button>
+                    <button disabled={value.jumlah === 1} onClick={() => minus(index)}>
+                      <HiMinusCircle />
+                    </button>
+                    <div>{value.jumlah}</div>
+                    <button disabled={value.jumlah === 10} onClick={() => plus(index)}>
+                      <HiPlusCircle />
+                    </button>
+                    <div>{value.total}</div>
+                    <button className="text-blue-900" onClick={() => showKet(index)}>
+                      <BsChevronDown />
+                    </button>
+                    <button onClick={() => hapus(index)}>
+                      <FaTrash />
+                    </button>
+                  </div>
                 </div>
+                <div>@{value.harga}</div>
+                {value.tampilkanKet && (
+                  <>
+                    <input className="border rounded-lg w-[21rem]" placeholder="tambahkan keterangan"></input>
+                    <button className="ml-3" onClick={() => hideKet(index)}>
+                      <RiDeleteBack2Fill />
+                    </button>
+                  </>
+                )}
               </div>
-              <div>@{value.harga}</div>
-              {value.tampilkanKet && (
-                <>
-                  <input className="border rounded-lg w-[21rem]" placeholder="tambahkan keterangan"></input>
-                  <button className="ml-3" onClick={() => hideKet(index)}>
-                    <RiDeleteBack2Fill />
-                  </button>
-                </>
-              )}
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </div>
