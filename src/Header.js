@@ -91,9 +91,7 @@ export default function Header() {
           <label>TEMPAT DUDUK :</label>
           <input type={"number"} min={"1"} max={"10"} className="ml-1 pl-1 py-1 border border-[#5cc0cb]" />
         </div>
-        <div className=" py-2 hidden md:flex items-center justify-center shadow w-[120px] mx-auto hover:shadow hover:bg-[#9be2ea] font-semibold text-[#0d5489] hover:text-[#ffff]">
-          <button className="">BATAL LOGIN</button>
-        </div>
+        <button className=" py-2 hidden md:flex items-center justify-center shadow w-[120px] mx-auto hover:shadow hover:bg-[#9be2ea] font-semibold text-[#0d5489] hover:text-[#ffff]">BATAL LOGIN</button>
       </div>
     </header>
   );
