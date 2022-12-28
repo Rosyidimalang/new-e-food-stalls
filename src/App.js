@@ -124,30 +124,33 @@ export default function App() {
             }  Pesanan`}</button>
           </div>
           <div className="space-y-6">
-            <div className="font-bold text-[22px]">Total :</div>
+            <div className="flex justify-between ">
+              <div className="font-bold text-[22px]">Total :</div>
+              <div className="font-bold text-[22px]">Rp {}</div>
+            </div>
             <div className="flex justify-center">
-              <button className=" shadow bg-[#ef2916] py-2 rounded-full font-bold text-[22px] text-[#fff700] w-3/4 hover:bg-red-300 hover:text-[#f5f3ad] ">Checkout</button>
+              <button className=" shadow bg-[#ef2916] py-2 rounded-full font-bold text-[22px] text-[#fff700] w-4/5 hover:bg-red-300 hover:text-[#f5f3ad] ">Checkout</button>
             </div>
           </div>
           {tampilPesanan &&
             pesanan.map((value, index) => (
-              <div className="bg-[#06ed9c] p-5 space-y-2 w-3/4 mx-auto rounded-lg">
+              <div className="bg-[#06ed9c] p-5 space-y-2 w-4/5 mx-auto rounded-lg">
                 <div>
                   <div className="flex justify-between items-center ">
                     <div className="font-bold text-[18px] text-red-900 max-w-[100px] ">{value.nama}</div>
 
-                    <button className="font-bold text-[18px] text-red-900" disabled={value.jumlah === 1} onClick={() => minus(index)}>
+                    <button className="font-bold text-[25px] text-red-900" disabled={value.jumlah === 1} onClick={() => minus(index)}>
                       <HiMinusCircle />
                     </button>
-                    <div className="font-bold text-[18px] text-red-900">{value.jumlah}</div>
-                    <button className="font-bold text-[18px] text-red-900" disabled={value.jumlah === 10} onClick={() => plus(index)}>
+                    <div className="font-bold text-[23px] text-red-900">{value.jumlah}</div>
+                    <button className="font-bold text-[25px] text-red-900" disabled={value.jumlah === 10} onClick={() => plus(index)}>
                       <HiPlusCircle />
                     </button>
-                    <div className="font-bold text-[18px] text-red-900">{value.total}</div>
+                    <div className="font-bold text-[20px] text-red-900">{value.total}</div>
                   </div>
                 </div>
                 <div className="flex justify-between">
-                  <div className="font-bold text-[18px] text-red-900">@{value.harga}</div>
+                  <div className="font-bold text-[20px] text-red-900">@{value.harga}</div>
                   <button className="font-bold text-[22px] text-red-900" onClick={() => hapus(index)}>
                     <FaTrash />
                   </button>
