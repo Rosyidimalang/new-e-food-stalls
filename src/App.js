@@ -12,7 +12,7 @@ import { animation } from "./utils/constant";
 const menus = ["makanan", "minuman", "lainnya"];
 const product = {
   makanan: [
-    { nama: "sate Ayam", harga: 16000, gambar: "sate-ayam.jpg" },
+    { nama: "Sate Ayam", harga: 16000, gambar: "sate-ayam.jpg" },
     {
       nama: "Nasi Goreng Telur",
       harga: 14000,
@@ -92,9 +92,9 @@ export default function App() {
           <div className=" font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">KATEGORI</div>
           <div className=" grid grid-cols-3 md:grid-cols-1 ">
             {menus.map((value, index) => (
-              <div className="font-bold text-[18px] text-[#fff700] mb-2 shadow bg-red-600 py-2 text-center hover:bg-red-300 hover:text-[#f5f3ad]">
-                <button onClick={() => setSelectedMenud(value)}>{value}</button>
-              </div>
+              <button onClick={() => setSelectedMenud(value)} className="font-bold text-[18px] text-[#fff700] mb-2 shadow bg-red-600 py-2 text-center rounded-sm hover:bg-red-300 hover:text-[#f5f3ad]">
+                {value}
+              </button>
             ))}
           </div>
         </div>
@@ -102,10 +102,14 @@ export default function App() {
           <div className="font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">PRODUK</div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-5 ">
             {product[selectedMenu].map((value, index) => (
-              <div onClick={() => tambahkankepesanan(value)} className={`${animation} bg-amber-600 text-center p-3 `}>
-                <img src={value.gambar} alt="gambar" />
-                <div>{value.nama}</div>
-                <div>{value.harga}</div>
+              <div onClick={() => tambahkankepesanan(value)} className={`${animation} bg-red-600 text-center p-4 rounded-lg space-y-6 `}>
+                <img src={value.gambar} alt="gambar" className="w-full h-40 rounded-lg" />
+                <div className="space-y-2">
+                  <div className="bg-[#e7fb04] rounded-sm">
+                    <div className="font-bold text-[17px] text-[#2b8018]">{value.nama}</div>
+                  </div>
+                  <div className="font-bold text-[18px] text-[#fff700]">{value.harga}</div>
+                </div>
               </div>
             ))}
           </div>

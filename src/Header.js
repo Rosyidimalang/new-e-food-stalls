@@ -50,7 +50,7 @@ export default function Header() {
       <div className="hidden md:grid grid-cols-2 py-2 bg-slate-200">
         <div className={` md:px-[10rem] font-bold text-2xl hover:text-yellow-500 text-[#5cc0cb] flex items-center`}>
           <h1>
-            <a href="/index.js">WARMINDO H2</a>
+            <a href="/index.js">WARMINDO ROSYIDI</a>
           </h1>
         </div>
         <div className="grid grid-cols-3 font-bold text-[#5cc0cb]">
