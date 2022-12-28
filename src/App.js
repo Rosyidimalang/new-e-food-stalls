@@ -116,40 +116,46 @@ export default function App() {
         </div>
         <div className="col-span-3 space-y-5 order-2 md:order-3">
           <div className="font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">
-            PESANAN <span className="text-red-400">{pesanan.length} </span>{" "}
+            PESANAN : <span className="text-red-400">{pesanan.length} </span>{" "}
           </div>
-          <button onClick={() => settampilPesanan(!tampilPesanan)}>{`${tampilPesanan ? "hide" : "tampilkan"}  pesanan`}</button>
+          <div className="flex justify-start mr-5">
+            <button onClick={() => settampilPesanan(!tampilPesanan)} className="font-bold text-[18px] text-red-700 shadow bg-[#30fb02] py-2 px-2 text-center rounded-sm hover:bg-red-300 hover:text-[#30fb02]">{`${
+              tampilPesanan ? "Hide" : "Tampilkan"
+            }  Pesanan`}</button>
+          </div>
           {tampilPesanan &&
             pesanan.map((value, index) => (
-              <div className="bg-teal-500 p-7">
+              <div className="bg-[#06ed9c] p-5 space-y-2 w-3/4 mx-auto rounded-lg">
                 <div>
-                  <div className="flex gap-[40px]  ">
-                    <div>{value.nama}</div>
+                  <div className="flex justify-between  ">
+                    <div className="font-bold text-[18px] text-red-900">{value.nama}</div>
 
-                    <button disabled={value.jumlah === 1} onClick={() => minus(index)}>
+                    <button className="font-bold text-[18px] text-red-900" disabled={value.jumlah === 1} onClick={() => minus(index)}>
                       <HiMinusCircle />
                     </button>
-                    <div>{value.jumlah}</div>
-                    <button disabled={value.jumlah === 10} onClick={() => plus(index)}>
+                    <div className="font-bold text-[18px] text-red-900">{value.jumlah}</div>
+                    <button className="font-bold text-[18px] text-red-900" disabled={value.jumlah === 10} onClick={() => plus(index)}>
                       <HiPlusCircle />
                     </button>
-                    <div>{value.total}</div>
-                    <button className="text-blue-900" onClick={() => showKet(index)}>
-                      <BsChevronDown />
-                    </button>
-                    <button onClick={() => hapus(index)}>
-                      <FaTrash />
-                    </button>
+                    <div className="font-bold text-[18px] text-red-900">{value.total}</div>
                   </div>
                 </div>
-                <div>@{value.harga}</div>
+                <div className="flex justify-between">
+                  <div className="font-bold text-[18px] text-red-900">@{value.harga}</div>
+                  <button className="font-bold text-[22px] text-red-900" onClick={() => hapus(index)}>
+                    <FaTrash />
+                  </button>
+                  <button className="font-bold text-[22px] text-red-900" onClick={() => showKet(index)}>
+                    <BsChevronDown />
+                  </button>
+                </div>
                 {value.tampilkanKet && (
-                  <>
-                    <input className="border rounded-lg w-[21rem]" placeholder="tambahkan keterangan"></input>
-                    <button className="ml-3" onClick={() => hideKet(index)}>
+                  <div className="flex gap-4">
+                    <input className="border rounded-lg w-full px-3 py-1" placeholder="tambahkan keterangan"></input>
+                    <button className="font-bold text-[18px] text-red-900" onClick={() => hideKet(index)}>
                       <RiDeleteBack2Fill />
                     </button>
-                  </>
+                  </div>
                 )}
               </div>
             ))}
