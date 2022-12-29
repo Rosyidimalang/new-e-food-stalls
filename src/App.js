@@ -84,7 +84,7 @@ export default function App() {
     newPesanan[idx].tampilkanKet = false;
     setPesanan(newPesanan);
   };
-
+  const allTotal = newPesanan.reduce((akumulator, currentValue) => akumulator + currentValue.total, 0);
   return (
     <div>
       <div className="flex flex-col md:grid grid-cols-10 gap-3">
@@ -124,9 +124,10 @@ export default function App() {
             }  Pesanan`}</button>
           </div>
           <div className="space-y-6">
-            <div className="flex justify-between ">
-              <div className="font-bold text-[22px]">Total :</div>
-              <div className="font-bold text-[22px]">Rp {}</div>
+            <div className="flex justify-center space-x-3">
+              <div className="font-bold text-[22px]">Total</div>
+              <di className="font-bold text-[22px]">:</di>
+              <div className="font-bold text-[22px]">Rp {allTotal}</div>
             </div>
             <div className="flex justify-center">
               <button className=" shadow bg-[#ef2916] py-2 rounded-full font-bold text-[22px] text-[#fff700] w-4/5 hover:bg-red-300 hover:text-[#f5f3ad] ">Checkout</button>
