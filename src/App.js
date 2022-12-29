@@ -88,7 +88,7 @@ export default function App() {
   return (
     <div>
       <div className="flex flex-col md:grid grid-cols-10 gap-3">
-        <div className="md:order-1">
+        <div className="order-2 md:order-1">
           <div className=" font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">KATEGORI</div>
           <div className=" grid grid-cols-3 md:grid-cols-1 ">
             {menus.map((value, index) => (
@@ -114,7 +114,7 @@ export default function App() {
             ))}
           </div>
         </div>
-        <div className="col-span-3 space-y-5 order-2 md:order-3">
+        <div className="col-span-3 space-y-5 order-1 md:order-3">
           <div className="font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">
             PESANAN : <span className="text-red-400">{pesanan.length} </span>{" "}
           </div>

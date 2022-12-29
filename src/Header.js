@@ -47,8 +47,8 @@ export default function Header() {
           </ul>
         </div>
       </div>
-      <div className="hidden md:grid grid-cols-2 py-2 bg-slate-200">
-        <div className={` md:px-[10rem] font-bold text-2xl hover:text-yellow-500 text-[#5cc0cb] flex items-center`}>
+      <div className="md:grid grid-cols-2 py-2 bg-slate-200">
+        <div className={` justify-center md:px-[10rem] font-bold text-2xl hover:text-yellow-500 text-[#5cc0cb] flex items-center`}>
           <h1>
             <a href="/index.js">WARMINDO ROSYIDI</a>
           </h1>
@@ -77,21 +77,27 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="block md:hidden">MENUS</div>
-      <div className="grid grid-cols-4">
-        <div className="py-2 flex gap-2 items-center justify-center font-semibold text-[#0d5489]">
+      <div className="md:grid grid-cols-4">
+        <div className="py-2 mx-2 flex gap-2 items-center justify-start font-semibold text-[#0d5489]">
           Pembeli :
           <input type={onchange} placeholder="atas nama" className="ml-1 pl-1 py-1 border border-[#5cc0cb]" />
         </div>
-        <div className="py-2 mx-2 flex items-center font-semibold text-[#0d5489] justify-end">
+        <div className="py-2 mx-2 flex items-center font-semibold text-[#0d5489] justify-start">
           <input type={"checkbox"} />
           <label className="ml-2">BUNGKUS</label>
         </div>
-        <div className="py-2 mx-2 flex items-center font-semibold text-[#0d5489] justify-end">
+        <div className="py-2 mx-2 flex items-center font-semibold text-[#0d5489] justify-start">
           <label>TEMPAT DUDUK :</label>
-          <input type={"number"} min={"1"} max={"10"} className="ml-1 pl-1 py-1 border border-[#5cc0cb]" />
+          <select className="ml-2 px-4 py-1 border border-[#5cc0cb]">
+            <option>---</option>
+            {Array(10)
+              .fill(null)
+              .map((v, i) => (
+                <option> {i}</option>
+              ))}
+          </select>
         </div>
-        <button className=" py-2 hidden md:flex items-center justify-center shadow w-[120px] mx-auto hover:shadow hover:bg-[#9be2ea] font-semibold text-[#0d5489] hover:text-[#ffff]">BATAL LOGIN</button>
+        <button className="py-2 md:flex items-center justify-center shadow w-[120px] mx-auto hover:shadow hover:bg-[#9be2ea] font-semibold text-[#0d5489] hover:text-[#ffff]">BATAL LOGIN</button>
       </div>
     </header>
   );
