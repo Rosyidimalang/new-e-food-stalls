@@ -118,7 +118,7 @@ export default function App() {
           <div className="font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">
             PESANAN : <span className="text-red-400">{pesanan.length} </span>{" "}
           </div>
-          <div className="flex justify-start mr-5">
+          <div className="flex justify-end mr-5 md:hidden">
             <button onClick={() => settampilPesanan(!tampilPesanan)} className="font-bold text-[18px] text-red-700 shadow bg-[#30fb02] py-2 px-2 text-center rounded-sm hover:bg-red-300 hover:text-[#30fb02]">{`${
               tampilPesanan ? "Hide" : "Tampilkan"
             }  Pesanan`}</button>
