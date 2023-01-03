@@ -27,7 +27,7 @@ export default function Header({ setPesanan, newPesanan }) {
         <div>
           <ul>
             <li>
-              <a href="#">
+              <a href="/">
                 <BsYoutube className="text-[#fa1b1b]" />
               </a>
             </li>
@@ -36,7 +36,7 @@ export default function Header({ setPesanan, newPesanan }) {
         <div>
           <ul>
             <li>
-              <a href="#">
+              <a href="/">
                 <BsInstagram className="text-[#f60632]" />
               </a>
             </li>
@@ -45,7 +45,7 @@ export default function Header({ setPesanan, newPesanan }) {
         <div>
           <ul>
             <li>
-              <a href="wa.me/081239495425">
+              <a href="https://wa.me/081239495425">
                 <BsWhatsapp className="text-[#45c747]" />
               </a>
             </li>
@@ -64,7 +64,7 @@ export default function Header({ setPesanan, newPesanan }) {
           <div className="border rounded-xl bg-slate-200 py-2 w-[120px] mx-auto text-center hover:text-[#ffff] hover:bg-[#9be2ea]">
             <ul>
               <li>
-                <a href="/customer.js">CUSTOMER</a>
+                <a href="/customer">CUSTOMER</a>
               </li>
             </ul>
           </div>
