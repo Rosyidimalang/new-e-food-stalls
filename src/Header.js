@@ -64,7 +64,7 @@ export default function Header({ setPesanan, newPesanan }) {
           <div className="border rounded-xl bg-slate-200 py-2 w-[120px] mx-auto text-center hover:text-[#ffff] hover:bg-[#9be2ea]">
             <ul>
               <li>
-                <a href="/index.js">HOME</a>
+                <a href="/customer.js">CUSTOMER</a>
               </li>
             </ul>
           </div>
