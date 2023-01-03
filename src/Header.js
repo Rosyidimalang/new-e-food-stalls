@@ -1,12 +1,17 @@
 import React from "react";
-import { ReactDOM } from "react";
 import "./App.css";
 import { BsFacebook } from "react-icons/bs";
 import { BsYoutube } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { BsWhatsapp } from "react-icons/bs";
 
-export default function Header() {
+export default function Header({ setPesanan, newPesanan }) {
+  const handleNaming = (e) => {
+    newPesanan.customer = e.target.value;
+    console.log("nwepwe", newPesanan);
+    setPesanan(newPesanan);
+  };
+
   return (
     <header>
       <div className="flex gap-3 items-center px-[10rem] py-2  bg-[#9be2ea]">
@@ -48,7 +53,9 @@ export default function Header() {
         </div>
       </div>
       <div className="md:grid grid-cols-2 py-2 bg-slate-200">
-        <div className={`justify-center md:px-[10rem] font-bold text-2xl hover:text-yellow-500 text-[#5cc0cb] flex items-center`}>
+        <div
+          className={` md:px-[10rem] font-bold text-2xl hover:text-yellow-500 text-[#5cc0cb] flex items-center justify-center md:justify-start`}
+        >
           <h1>
             <a href="/index.js">WARMINDO ROSYIDI</a>
           </h1>
@@ -80,7 +87,13 @@ export default function Header() {
       <div className="md:grid grid-cols-4">
         <div className="py-2 mx-2 flex gap-2 items-center justify-start font-semibold text-[#0d5489]">
           Pembeli :
-          <input type={onchange} placeholder="atas nama" className="ml-1 pl-1 py-1 border border-[#5cc0cb]" />
+          <input
+            type="text"
+            placeholder="atas nama"
+            className="ml-1 pl-1 py-1 border border-[#5cc0cb]"
+            onChange={handleNaming}
+            value={newPesanan.customer}
+          />
         </div>
         <div className="py-2 mx-2 flex items-center font-semibold text-[#0d5489] justify-start">
           <input type={"checkbox"} />
@@ -88,16 +101,24 @@ export default function Header() {
         </div>
         <div className="py-2 mx-2 flex items-center font-semibold text-[#0d5489] justify-start">
           <label>TEMPAT DUDUK :</label>
-          <select className="ml-2 px-4 py-1 border border-[#5cc0cb]">
+          <select
+            onChange={(e) => {
+              newPesanan.chair = e.target.value;
+              setPesanan(newPesanan);
+            }}
+            className="ml-2 px-4 py-1 border border-[#5cc0cb]"
+          >
             <option>---</option>
             {Array(10)
               .fill(null)
               .map((v, i) => (
-                <option> {i}</option>
+                <option value={i}> {i}</option>
               ))}
           </select>
         </div>
-        <button className="py-2 md:flex items-center justify-center shadow w-[120px] mx-auto hover:shadow hover:bg-[#9be2ea] font-semibold text-[#0d5489] hover:text-[#ffff]">BATAL LOGIN</button>
+        <button className="py-2 flex items-center justify-center shadow w-[120px] mx-auto hover:shadow hover:bg-[#9be2ea] font-semibold text-[#0d5489] hover:text-[#ffff]">
+          BATAL LOGIN
+        </button>
       </div>
     </header>
   );
