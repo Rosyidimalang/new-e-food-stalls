@@ -6,7 +6,7 @@ export default function Customer() {
   let prettyData = JSON.stringify(value, null, 2);
 
   return (
-    <div className="border rounded-xl bg-slate-300">
+    <div className="border bg-slate-300">
       <pre className="font-mono whitespace-pre-wrap">{prettyData}</pre>;
     </div>
   );
