@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
 export default function Customer() {
   const [customers, setCustomers] = useState(
@@ -17,21 +16,28 @@ export default function Customer() {
   };
 
   return (
-    <div className="border bg-slate-300">
+    <div className="space-y-5">
       {customers.map((item, idx) => (
-        <div>
-          <div className="flex gap-5">
-            <div>{item.customer}</div>
-            <div> {item.isBungkus ? "bungkus" : item.chair} </div>
+        <div className="border rounded-lg flex justify-between w-full md:w-2/3 mx-auto px-3 md:p-10 bg-red-600">
+          <div className="font-bold text-[20px] md:text-[25px] text-[#fff700]">
+            <div>Nama Pembeli : {item.customer}</div>
+            <div className="">
+              {item.order.map((ord, idx2) => (
+                <div className="border">
+                  <div>Pesanan : {ord.nama} </div>
+                  <div>Jumlah : {ord.jumlah} </div>
+                </div>
+              ))}
+            </div>
+            <div>{item.isBungkus ? "bungkus" : `kursi :  ${item.chair}`}</div>
           </div>
-          <div className="grid grid-cols-5">
-            {item.order.map((ord, idx2) => (
-              <div className="bg-yellow-300">
-                <div>{ord.jumlah} </div>
-                <div>{ord.nama} </div>
-              </div>
-            ))}
-            <button onClick={() => selesai(idx)}>SELESAI</button>
+          <div className="flex items-center">
+            <button
+              className="text-red-600 bg-[#fff700] font-bold text-[20px] md:text-[25px] px-3 md:px-10 py-1 md:py-5 rounded-full"
+              onClick={() => selesai(idx)}
+            >
+              SELESAI
+            </button>
           </div>
         </div>
       ))}
