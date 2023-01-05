@@ -8,6 +8,8 @@ import { FaTrash } from "react-icons/fa";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { animation } from "./utils/constant";
 import Header from "./Header";
+import HomeHeader from "./HomeHeader";
+import DefaultLayout from "./DefaultLayout";
 
 const menus = ["makanan", "minuman", "lainnya"];
 const product = {
@@ -117,8 +119,8 @@ export default function Home() {
     setPesanan({ customer: "", order: [], chair: "", isBungkus: false });
   };
   return (
-    <div>
-      <Header newPesanan={newPesanan} setPesanan={setPesanan} />
+    <DefaultLayout>
+      <HomeHeader newPesanan={newPesanan} setPesanan={setPesanan} />
       <div className="flex flex-col md:grid grid-cols-10 gap-3">
         <div className="order-2 md:order-1">
           <div className=" font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">
@@ -166,9 +168,14 @@ export default function Home() {
         </div>
         <div className="col-span-3 space-y-5 order-1 md:order-3">
           <div className="font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">
-            PESANAN : <span className="text-red-400">{pesanan.length} </span>{" "}
+            PESANAN :{" "}
+            <span className="text-red-400">{pesanan.order.length} </span>{" "}
           </div>
-          <div className="flex justify-end mr-5 md:hidden">
+          <div
+            className={`${
+              tampilPesanan ? "md:hidden" : ""
+            } flex justify-end mr-5`}
+          >
             <button
               onClick={() => settampilPesanan(!tampilPesanan)}
               className="font-bold text-[18px] text-red-700 shadow bg-[#30fb02] py-2 px-2 text-center rounded-sm hover:bg-red-300 hover:text-[#30fb02]"
@@ -259,6 +266,6 @@ export default function Home() {
             ))}
         </div>
       </div>
-    </div>
+    </DefaultLayout>
   );
 }
