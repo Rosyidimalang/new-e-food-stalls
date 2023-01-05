@@ -114,7 +114,7 @@ export default function Home() {
     localStorage.setItem("customers", JSON.stringify(allCustomers));
 
     // utk resest currentCustomer
-    setPesanan({ customer: "", order: [] });
+    setPesanan({ customer: "", order: [], chair: "", isBungkus: false });
   };
   return (
     <div>
@@ -182,7 +182,10 @@ export default function Home() {
             </div>
             <div className="flex justify-center">
               <button
-                disabled={pesanan.customer === "" || pesanan.order.length === 0}
+                disabled={
+                  pesanan.customer === "" ||
+                  (pesanan.order.length === 0 && pesanan.chair === "")
+                }
                 onClick={checkout}
                 className=" shadow bg-[#ef2916] py-2 rounded-full font-bold text-[22px] text-[#fff700] w-4/5 hover:bg-red-300 hover:text-[#f5f3ad] "
               >

@@ -96,7 +96,13 @@ export default function Header({ setPesanan, newPesanan }) {
           />
         </div>
         <div className="py-2 mx-2 flex items-center font-semibold text-[#0d5489] justify-start">
-          <input type={"checkbox"} />
+          <input
+            onChange={(e) => {
+              newPesanan.isBungkus = e.target.checked;
+              setPesanan(newPesanan);
+            }}
+            type={"checkbox"}
+          />
           <label className="ml-2">BUNGKUS</label>
         </div>
         <div className="py-2 mx-2 flex items-center font-semibold text-[#0d5489] justify-start">
