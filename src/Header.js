@@ -11,25 +11,25 @@ const socialLinks = [
     name: "Facebook",
     icon: BsFacebook,
     url: "facebook.com/ahmdyabduallah",
-    color: "text-[#323ff5]",
+    color: "#323ff5",
   },
   {
     name: "Youtube",
     icon: BsYoutube,
     url: "/",
-    color: "text-[#fa1b1b]",
+    color: "#fa1b1b",
   },
   {
     name: "Instagram",
     icon: BsInstagram,
     url: "/",
-    color: "text-[#f60632]",
+    color: "#f60632",
   },
   {
     name: "Whatsapp",
     icon: BsWhatsapp,
     url: "https://wa.me/6281239495425",
-    color: "text-[#45c747]",
+    color: "#45c747",
   },
 ];
 
@@ -42,7 +42,7 @@ export default function Header() {
           const Icon = link.icon;
           return (
             <Link key={link.name} to={link.url}>
-              <Icon className={link.color} />
+              <Icon style={{ color: link.color }} />
             </Link>
           );
         })}
