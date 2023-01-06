@@ -7,7 +7,6 @@ import { BsChevronDown } from "react-icons/bs";
 import { FaTrash } from "react-icons/fa";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { animation } from "./utils/constant";
-import Header from "./Header";
 import HomeHeader from "./HomeHeader";
 import DefaultLayout from "./DefaultLayout";
 
@@ -189,11 +188,27 @@ export default function Home() {
             </div>
             <div className="flex justify-center">
               <button
-                disabled={
-                  pesanan.customer === "" ||
-                  (pesanan.order.length === 0 && pesanan.chair === "")
-                }
-                onClick={checkout}
+                // disabled={
+                //   pesanan.customer === "" ||
+                //   (pesanan.order.length === 0 && pesanan.chair === "")
+                // }
+                onClick={() => {
+                  if (pesanan.customer === "") {
+                    alert(
+                      "Anda belum mengisi nama, silahkan mengisi nama anda di kolom pembeli!"
+                    );
+                  }
+                  if (pesanan.order.length === 0) {
+                    alert("Anda belum memesan, silahkan list pesanan anda!");
+                  }
+                  if (pesanan.chair === "" && pesanan.isBungkus === false) {
+                    alert(
+                      "Anda belum memilih tempat duduk, silahkan pilih tempat duduk!"
+                    );
+                  } else {
+                    checkout();
+                  }
+                }}
                 className=" shadow bg-[#ef2916] py-2 rounded-full font-bold text-[22px] text-[#fff700] w-4/5 hover:bg-red-300 hover:text-[#f5f3ad] "
               >
                 Checkout
