@@ -37,7 +37,7 @@ export default function Header() {
   const customers = JSON.parse(localStorage.getItem("customers"));
   return (
     <header>
-      <div className="flex gap-3 items-center px-[10rem] py-2  bg-[#9be2ea]">
+      <div className="flex gap-3 items-center justify-center md:justify-start px-[10rem] py-2  bg-[#9be2ea]">
         {socialLinks.map((link) => {
           const Icon = link.icon;
           return (
