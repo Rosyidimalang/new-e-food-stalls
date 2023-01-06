@@ -38,11 +38,14 @@ export default function Header() {
   return (
     <header>
       <div className="flex gap-3 items-center px-[10rem] py-2  bg-[#9be2ea]">
-        {socialLinks.map((link) => (
-          <Link key={link.name} to={link.url}>
-            <link.icon className={`text-${link.color}`} />
-          </Link>
-        ))}
+        {socialLinks.map((link) => {
+          const Icon = link.icon;
+          return (
+            <Link key={link.name} to={link.url}>
+              <Icon className={`text-${link.color}`} />
+            </Link>
+          );
+        })}
       </div>
       <div className="md:grid grid-cols-2 py-2 bg-slate-200">
         <div
