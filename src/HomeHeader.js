@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function HomeHeader({ setPesanan, newPesanan }) {
   const handleNaming = (e) => {
@@ -7,7 +7,7 @@ export default function HomeHeader({ setPesanan, newPesanan }) {
     setPesanan(newPesanan);
   };
   return (
-    <div className="md:grid grid-cols-4">
+    <div className="md:flex justify-between md:mx-5">
       <div className="py-2 mx-2 flex gap-2 items-center justify-start font-semibold text-[#0d5489]">
         Pembeli :
         <input
@@ -45,9 +45,6 @@ export default function HomeHeader({ setPesanan, newPesanan }) {
             ))}
         </select>
       </div>
-      <button className="py-2 flex items-center justify-center shadow w-[120px] mx-auto hover:shadow hover:bg-[#9be2ea] font-semibold text-[#0d5489] hover:text-[#ffff]">
-        BATAL LOGIN
-      </button>
     </div>
   );
 }

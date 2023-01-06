@@ -23,24 +23,24 @@ export default function Customer() {
       ) : (
         <div className="space-y-5">
           {customers.map((item, idx) => (
-            <div className="border rounded-lg flex justify-between w-full md:w-2/3 mx-auto px-3 md:p-10 bg-red-600">
+            <div className="border rounded-lg md:flex justify-between w-full md:w-2/3 mx-auto px-3 md:p-10 bg-red-600 space-y-3">
               <div className="font-bold text-[20px] md:text-[25px] text-[#fff700]">
-                <div>Nama Pembeli : {item.customer}</div>
-                <div className="">
-                  {item.order.map((ord, idx2) => (
-                    <div className="border">
-                      <div>Pesanan : {ord.nama} </div>
-                      <div>Jumlah : {ord.jumlah} </div>
-                    </div>
-                  ))}
-                </div>
+                <div>Pembeli : {item.customer}</div>
                 <div>
                   {item.isBungkus ? "bungkus" : `kursi :  ${item.chair}`}
                 </div>
+                <div className="">
+                  {item.order.map((ord, idx2) => (
+                    <div className="border">
+                      <div>{ord.nama} </div>
+                      <div>{ord.jumlah} </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="flex items-center">
+              <div className="flex justify-center md:flex items-center">
                 <button
-                  className="text-red-600 bg-[#fff700] font-bold text-[20px] md:text-[25px] px-3 md:px-10 py-1 md:py-5 rounded-full"
+                  className="text-red-600 bg-[#fff700] font-bold text-[20px] md:text-[25px] px-20 md:px-10 py-3 md:py-5 rounded-full"
                   onClick={() => selesai(idx)}
                 >
                   SELESAI
