@@ -23,7 +23,10 @@ export default function Customer() {
       ) : (
         <div className="space-y-5">
           {customers.map((item, idx) => (
-            <div className="border rounded-lg md:flex justify-between w-full md:w-2/3 mx-auto px-3 md:p-10 bg-red-600 space-y-3">
+            <div
+              key={idx}
+              className="border rounded-lg md:flex justify-between w-full md:w-2/3 mx-auto px-3 md:p-10 bg-red-600 space-y-3"
+            >
               <div className="font-bold text-[20px] md:text-[25px] text-[#fff700]">
                 <div>Pembeli : {item.customer}</div>
                 <div>
@@ -31,7 +34,7 @@ export default function Customer() {
                 </div>
                 <div className="">
                   {item.order.map((ord, idx2) => (
-                    <div className="border">
+                    <div key={idx} className="border">
                       <div>{ord.nama} </div>
                       <div>{ord.jumlah} </div>
                     </div>

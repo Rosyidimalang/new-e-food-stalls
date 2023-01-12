@@ -41,7 +41,10 @@ export default function HomeHeader({ setPesanan, newPesanan }) {
           {Array(10)
             .fill(null)
             .map((v, i) => (
-              <option value={i}> {i}</option>
+              <option key={i} value={i}>
+                {" "}
+                {i}
+              </option>
             ))}
         </select>
       </div>

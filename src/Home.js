@@ -126,8 +126,9 @@ export default function Home() {
             KATEGORI
           </div>
           <div className=" grid grid-cols-3 md:grid-cols-1 ">
-            {menus.map((value, index) => (
+            {menus.map((value, idx) => (
               <button
+                key={idx}
                 onClick={() => setSelectedMenud(value)}
                 className="font-bold text-[18px] text-[#fff700] mb-2 shadow bg-red-600 py-2 text-center rounded-sm hover:bg-red-300 hover:text-[#f5f3ad]"
               >
@@ -141,8 +142,9 @@ export default function Home() {
             PRODUK
           </div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-5 ">
-            {product[selectedMenu].map((value, index) => (
+            {product[selectedMenu].map((value, idx) => (
               <div
+                key={idx}
                 onClick={() => tambahkankepesanan(value)}
                 className={`${animation} bg-red-600 text-center p-4 rounded-lg space-y-6 `}
               >
@@ -216,8 +218,11 @@ export default function Home() {
             </div>
           </div>
           {tampilPesanan &&
-            pesanan.order.map((value, index) => (
-              <div className="bg-[#06ed9c] p-5 space-y-2 w-4/5 mx-auto rounded-lg">
+            pesanan.order.map((value, idx) => (
+              <div
+                key={idx}
+                className="bg-[#06ed9c] p-5 space-y-2 w-4/5 mx-auto rounded-lg"
+              >
                 <div>
                   <div className="flex justify-between items-center ">
                     <div className="font-bold text-[18px] text-red-900 max-w-[100px] ">
@@ -227,7 +232,7 @@ export default function Home() {
                     <button
                       className="font-bold text-[25px] text-red-900"
                       disabled={value.jumlah === 1}
-                      onClick={() => minus(index)}
+                      onClick={() => minus(idx)}
                     >
                       <HiMinusCircle />
                     </button>
@@ -237,7 +242,7 @@ export default function Home() {
                     <button
                       className="font-bold text-[25px] text-red-900"
                       disabled={value.jumlah === 10}
-                      onClick={() => plus(index)}
+                      onClick={() => plus(idx)}
                     >
                       <HiPlusCircle />
                     </button>
@@ -252,13 +257,13 @@ export default function Home() {
                   </div>
                   <button
                     className="font-bold text-[22px] text-red-900"
-                    onClick={() => hapus(index)}
+                    onClick={() => hapus(idx)}
                   >
                     <FaTrash />
                   </button>
                   <button
                     className="font-bold text-[22px] text-red-900"
-                    onClick={() => showKet(index)}
+                    onClick={() => showKet(idx)}
                   >
                     <BsChevronDown />
                   </button>
@@ -271,7 +276,7 @@ export default function Home() {
                     ></input>
                     <button
                       className="font-bold text-[18px] text-red-900"
-                      onClick={() => hideKet(index)}
+                      onClick={() => hideKet(idx)}
                     >
                       <RiDeleteBack2Fill />
                     </button>
