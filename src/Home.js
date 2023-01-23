@@ -128,6 +128,7 @@ export default function Home() {
           <div className=" grid grid-cols-3 md:grid-cols-1 ">
             {menus.map((value, index) => (
               <button
+                key={index}
                 onClick={() => setSelectedMenud(value)}
                 className="font-bold text-[18px] text-[#fff700] mb-2 shadow bg-red-600 py-2 text-center rounded-sm hover:bg-red-300 hover:text-[#f5f3ad]"
               >
@@ -143,6 +144,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-5 ">
             {product[selectedMenu].map((value, index) => (
               <div
+                key={index}
                 onClick={() => tambahkankepesanan(value)}
                 className={`${animation} bg-red-600 text-center p-4 rounded-lg space-y-6 `}
               >
@@ -217,7 +219,10 @@ export default function Home() {
           </div>
           {tampilPesanan &&
             pesanan.order.map((value, index) => (
-              <div className="bg-[#06ed9c] p-5 space-y-2 w-4/5 mx-auto rounded-lg">
+              <div
+                key={index}
+                className="bg-[#06ed9c] p-5 space-y-2 w-4/5 mx-auto rounded-lg"
+              >
                 <div>
                   <div className="flex justify-between items-center ">
                     <div className="font-bold text-[18px] text-red-900 max-w-[100px] ">

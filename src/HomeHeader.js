@@ -30,6 +30,9 @@ export default function HomeHeader({ setPesanan, newPesanan }) {
         />
         <label className="ml-2">BUNGKUS</label>
       </div>
+      {/* <select>
+        <option>test</option>
+      </select> */}
       <div className="py-2 mx-2 flex items-center font-semibold text-[#0d5489] justify-start">
         <label>TEMPAT DUDUK :</label>
         <select
@@ -44,7 +47,6 @@ export default function HomeHeader({ setPesanan, newPesanan }) {
             .fill(null)
             .map((v, i) => (
               <option key={i} value={i}>
-                {" "}
                 {i}
               </option>
             ))}
