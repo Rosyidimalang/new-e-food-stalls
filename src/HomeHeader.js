@@ -8,15 +8,17 @@ export default function HomeHeader({ setPesanan, newPesanan }) {
   };
   return (
     <div className="md:flex justify-between md:mx-5">
-      <div className="py-2 mx-2 flex gap-2 items-center justify-start font-semibold text-[#0d5489]">
-        Pembeli :
-        <input
-          type="text"
-          placeholder="atas nama"
-          className="ml-1 pl-1 py-1 border border-[#5cc0cb]"
-          onChange={handleNaming}
-          value={newPesanan.customer}
-        />
+      <div className="py-2 mx-2 flex gap-2 items-center max-w-full font-semibold text-[#0d5489]">
+        <div>Pembeli :</div>
+        <div className="max-w-full">
+          <input
+            type="text"
+            placeholder="atas nama"
+            className="p-1 border border-[#5cc0cb] "
+            onChange={handleNaming}
+            value={newPesanan.customer}
+          />
+        </div>
       </div>
       <div className="py-2 mx-2 flex items-center font-semibold text-[#0d5489] justify-start">
         <input
@@ -41,7 +43,10 @@ export default function HomeHeader({ setPesanan, newPesanan }) {
           {Array(10)
             .fill(null)
             .map((v, i) => (
-              <option value={i}> {i}</option>
+              <option key={i} value={i}>
+                {" "}
+                {i}
+              </option>
             ))}
         </select>
       </div>

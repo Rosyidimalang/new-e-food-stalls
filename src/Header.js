@@ -10,7 +10,7 @@ const socialLinks = [
   {
     name: "Facebook",
     icon: BsFacebook,
-    url: "facebook.com/ahmdyabduallah",
+    url: "https://facebook.com/ahmdyabduallah",
     color: "#323ff5",
   },
   {
@@ -22,7 +22,7 @@ const socialLinks = [
   {
     name: "Instagram",
     icon: BsInstagram,
-    url: "/",
+    url: "https://www.instagram.com/ahmdy_abduallah",
     color: "#f60632",
   },
   {
@@ -41,9 +41,9 @@ export default function Header() {
         {socialLinks.map((link) => {
           const Icon = link.icon;
           return (
-            <Link key={link.name} to={link.url}>
+            <a key={link.name} href={link.url} target={"blank"}>
               <Icon style={{ color: link.color }} />
-            </Link>
+            </a>
           );
         })}
       </div>
