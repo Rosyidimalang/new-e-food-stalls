@@ -126,9 +126,9 @@ export default function Home() {
             KATEGORI
           </div>
           <div className=" grid grid-cols-3 md:grid-cols-1 ">
-            {menus.map((value, index) => (
+            {menus.map((value, idx) => (
               <button
-                key={index}
+                key={idx}
                 onClick={() => setSelectedMenud(value)}
                 className="font-bold text-[18px] text-[#fff700] mb-2 shadow bg-red-600 py-2 text-center rounded-sm hover:bg-red-300 hover:text-[#f5f3ad]"
               >
@@ -142,9 +142,9 @@ export default function Home() {
             PRODUK
           </div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-5 ">
-            {product[selectedMenu].map((value, index) => (
+            {product[selectedMenu].map((value, idx) => (
               <div
-                key={index}
+                key={idx}
                 onClick={() => tambahkankepesanan(value)}
                 className={`${animation} bg-red-600 text-center p-4 rounded-lg space-y-6 `}
               >
