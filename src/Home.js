@@ -185,7 +185,7 @@ export default function Home() {
           <div className="space-y-6">
             <div className="flex justify-center space-x-3">
               <div className="font-bold text-[22px]">Total</div>
-              <di className="font-bold text-[22px]">:</di>
+              <div className="font-bold text-[22px]">:</div>
               <div className="font-bold text-[22px]">Rp {allTotal}</div>
             </div>
             <div className="flex justify-center">
