@@ -18,7 +18,7 @@ export default function Customer() {
 
   return (
     <DefaultLayout>
-      {customers.length < 1 ? (
+      {customers?.length < 1 ? (
         <div>SAAT INI BELUM ADA PESANAN</div>
       ) : (
         <div className="space-y-5">

@@ -170,7 +170,7 @@ export default function Home() {
         <div className="col-span-3 space-y-5 order-1 md:order-3">
           <div className="font-bold text-[18px] text-[#0d5489] mb-3 shadow bg-slate-200 text-center py-2 px-2">
             PESANAN :{" "}
-            <span className="text-red-400">{pesanan.order.length} </span>{" "}
+            <span className="text-red-400">{pesanan?.order?.length} </span>{" "}
           </div>
           <div
             className={`${
@@ -200,7 +200,7 @@ export default function Home() {
                       "Anda belum mengisi nama, silahkan mengisi nama anda di kolom pembeli!"
                     );
                   }
-                  if (pesanan.order.length === 0) {
+                  if (pesanan?.order?.length === 0) {
                     alert("Anda belum memesan, silahkan list pesanan anda!");
                   }
                   if (pesanan.chair === "" && pesanan.isBungkus === false) {

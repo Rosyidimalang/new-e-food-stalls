@@ -58,7 +58,7 @@ export default function Header() {
             to="/customer"
             className="border rounded-xl bg-slate-200 py-2 w-[120px] mx-auto text-center hover:text-[#ffff] hover:bg-[#9be2ea]"
           >
-            CUSTOMER <span>{customers.length} </span>
+            CUSTOMER <span>{customers?.length} </span>
           </Link>
           <Link
             to="/"
